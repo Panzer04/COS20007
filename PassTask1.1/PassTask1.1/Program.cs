@@ -11,7 +11,6 @@ namespace PassTask1._1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.ReadLine();
 
             Message myMessage;
             myMessage = new Message("Hello, world!");
