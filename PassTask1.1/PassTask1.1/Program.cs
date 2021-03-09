@@ -24,6 +24,7 @@ namespace PassTask1._1
 
             Console.WriteLine("Name: ");
             string name = Console.ReadLine();
+            name.ToLower();
             if(name == "Jordan")
             {
                 messages[0].Print();
