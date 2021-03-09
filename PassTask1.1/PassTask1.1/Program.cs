@@ -24,16 +24,16 @@ namespace PassTask1._1
 
             Console.WriteLine("Name: ");
             string name = Console.ReadLine();
-            name.ToLower();
-            if(name == "Jordan")
+            name = name.ToLower();
+            if(name == "jordan")
             {
                 messages[0].Print();
             }
-            else if(name == "Kim")
+            else if(name == "kim")
             {
                 messages[1].Print();
             }
-            else if(name == "Keanu")
+            else if(name == "keanu")
             {
                 messages[2].Print();
             }
