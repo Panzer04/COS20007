@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CounterTest
 {
-    class Program
+    class HelloWorld
     {
         private static void PrintCounters(Counter[] counters)
         {
