@@ -20,7 +20,7 @@ namespace ShapeDrawer
                     myShape.X = SplashKit.MouseX();
                     myShape.Y = SplashKit.MouseY();
                 }
-                if (myShape.IsAt(SplashKit.MousePosition()) && SplashKit.KeyTyped(KeyCode.SpaceKey)) 
+                if (myShape.IsAt(SplashKit.MousePosition()) && SplashKit.KeyTyped(KeyCode.SpaceKey))
                 {
                     myShape.Color = SplashKit.RandomRGBColor(255);
                 }

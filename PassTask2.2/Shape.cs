@@ -15,7 +15,7 @@ namespace ShapeDrawer
         public Shape() //Class constructor
         {
             _color = Color.Green;
-            _x = 0; 
+            _x = 0;
             _y = 0;
             _width = 100;
             _height = 100;
@@ -49,7 +49,7 @@ namespace ShapeDrawer
         {
             get
             {
-                return _y; 
+                return _y;
             }
             set
             {
@@ -86,7 +86,7 @@ namespace ShapeDrawer
 
         public bool IsAt(Point2D pt)
         {
-            if((pt.X > _x) && (pt.X < (_x + _width)))
+            if ((pt.X > _x) && (pt.X < (_x + _width)))
             {
                 if ((pt.Y > _y) && (pt.Y < (_y + _height)))
                 {
