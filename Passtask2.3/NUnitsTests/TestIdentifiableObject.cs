@@ -1,10 +1,4 @@
-/*
- * File: NunitTemplate.cs
- * Author: Joshua Wright
- * Date: 16/08/2019
- * Unit: COS20007 Object Oriented Programming
- * Institution: Swinburne University of Technology
- */
+
 
 using System;
 using System.Collections.Generic;
@@ -50,20 +44,9 @@ namespace Passtask2._3
             IdentifiableObject testObject = new IdentifiableObject(testStringArray);
             StringAssert.AreEqualIgnoringCase("Test", testObject.FirstID);
         }
-
+        
         [Test]
         public void TestAddID()
-        {
-            string[] testStringArray = new string[] { "Test", "CheckOrder" };
-            IdentifiableObject testObject = new IdentifiableObject(testStringArray);
-
-            Assert.IsTrue(testObject.AreYou("CheckOrder"));
-        }
-        
-        [TestCase("Fred")]
-        [TestCase("bob")] 
-        [TestCase("WilmA")]
-        public void TestString(string toTest)
         {
             string[] testStringArray = new string[] { "Fred", "Bob" };
             IdentifiableObject testObject = new IdentifiableObject(testStringArray);
