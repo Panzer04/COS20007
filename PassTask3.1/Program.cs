@@ -17,6 +17,8 @@ namespace ShapeDrawer
                 SplashKit.ClearScreen(); //Clear screen to white                
                 if (SplashKit.MouseClicked(MouseButton.LeftButton))
                 {
+                    //No good way to instantiate a shape with different params directly in method?
+                    //Shape constructor needs ability to accept X/Y paramters, I guess?
                     Shape tempShape = new Shape();
                     tempShape.X = SplashKit.MouseX();
                     tempShape.Y = SplashKit.MouseY();
@@ -30,7 +32,7 @@ namespace ShapeDrawer
                 {
                     drawObject.SelectSchapesAt(SplashKit.MousePosition());
                 }
-                if (SplashKit.KeyTyped(KeyCode.DeleteKey))
+                if (SplashKit.KeyTyped(KeyCode.DeleteKey) || SplashKit.KeyTyped(KeyCode.BackspaceKey))
                 {
                     foreach (Shape s in drawObject.SelectedShapes)
                         drawObject.RemoveShape(s);

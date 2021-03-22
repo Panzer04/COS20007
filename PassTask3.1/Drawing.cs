@@ -72,7 +72,7 @@ namespace ShapeDrawer
         {
             foreach(Shape s in _shapes)
             {
-                if (!s.Selected) //Don't "unselect" shapes
+                if (!s.Selected) //Don't "unselect" shapes - Depends on exact desired behaviour, though
                 {
                     s.Selected = s.IsAt(pt);
                 }
