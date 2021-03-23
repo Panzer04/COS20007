@@ -12,40 +12,31 @@ namespace PassTask3._2
         }
 
         [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
-
-        [Test]
         public void TestInitialiseCounterToZero()
         {
-            Setup();
             Assert.AreEqual(0, _testCounter.Ticks);
         }
 
         [Test]
-        public void TestIncrementingCounter()
+        public void testCounterName()
         {
-            Setup();
-            _testCounter.Increment();
-            Assert.AreEqual(1, _testCounter.Ticks);
+            Assert.AreEqual("TEST COUNTER", _testCounter.Name);
         }
 
-        [Test]
-        public void TestIncrementingCounterMultipleTimes()
+        [TestCase(1, 1)]
+        [TestCase(10, 10)]
+        public void TestIncrementingCounter(int increments, int expectedResult)
         {
-            Setup();
-            _testCounter.Increment();
-            _testCounter.Increment();
-            _testCounter.Increment();
-            Assert.AreEqual(3, _testCounter.Ticks);
+            for(int i = 0; i < increments; i++)
+            {
+                _testCounter.Increment();
+            }            
+            Assert.AreEqual(expectedResult, _testCounter.Ticks);
         }
 
         [Test]
         public void TestCounterReset()
         {
-            Setup();
             _testCounter.Increment();
             _testCounter.Reset();
             Assert.AreEqual(0, _testCounter.Ticks);

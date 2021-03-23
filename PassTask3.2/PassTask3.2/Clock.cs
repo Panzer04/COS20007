@@ -26,6 +26,10 @@ namespace PassTask3._2
                 {
                     _hours.Increment();
                     _minutes.Reset();
+                    if(_hours.Ticks > 23)
+                    {
+                        Reset();
+                    }
                 }
             }
         }
@@ -36,6 +40,8 @@ namespace PassTask3._2
             _minutes.Reset();
             _hours.Reset();
         }
+
+        //Returns a string formatted as HH:MM:SS with filler zeros
         public string Time()
         {
             return _hours.Ticks.ToString("D2") + ":" + _minutes.Ticks.ToString("D2") + ":" + _seconds.Ticks.ToString("D2");
