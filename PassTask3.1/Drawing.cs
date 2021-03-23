@@ -76,6 +76,10 @@ namespace ShapeDrawer
                 {
                     s.Selected = s.IsAt(pt);
                 }
+                else //If already selected, unselect if at mouse position
+                {
+                    s.Selected = !s.IsAt(pt);
+                }
             }
         }
 
