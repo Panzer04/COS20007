@@ -7,7 +7,7 @@ using SplashKitSDK;
 
 namespace ShapeDrawer
 {
-    class Shape
+    public class Shape
     {
         private Color _color;
         private float _x, _y;
@@ -92,7 +92,7 @@ namespace ShapeDrawer
                 _selected = value;
             }
         }
-        public void Draw()
+        public virtual void Draw()
         {
             if (_selected)
             {
@@ -113,7 +113,7 @@ namespace ShapeDrawer
             return false;
         }
 
-        public void DrawOutline()
+        public virtual void DrawOutline()
         {
             SplashKit.FillRectangle(Color.Black, _x - 2, _y - 2, _width + 4, _height + 4);
         }

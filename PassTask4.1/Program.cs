@@ -7,8 +7,15 @@ namespace ShapeDrawer
 
     public class Program
     {
+        private enum ShapeKind
+        {
+            Rectangle,
+            Circle
+        }
         public static void Main()
         {
+            ShapeKind kindToAdd = ShapeKind.Circle;
+
             new Window("Shape Drawer", 800, 600);
             Drawing drawObject = new Drawing();
             do
@@ -17,12 +24,38 @@ namespace ShapeDrawer
                 SplashKit.ClearScreen(); //Clear screen to white                
                 if (SplashKit.MouseClicked(MouseButton.LeftButton))
                 {
+                    Shape newShape;
+
+                    if (SplashKit.KeyTyped(KeyCode.RKey))
+                    {
+                        kindToAdd = ShapeKind.Rectangle;
+                    }
+                    else if (SplashKit.KeyTyped(KeyCode.CKey))
+                    {
+                        kindToAdd = ShapeKind.Circle;
+                    }
+
+                    if (kindToAdd == ShapeKind.Circle)
+                    {
+                        MyCircle newCircle = new MyCircle();
+                        newCircle.X = SplashKit.MouseX();
+                        newCircle.Y = SplashKit.MouseY();
+                        newShape = newCircle;
+                    }
+                    else
+                    {
+                        MyRectangle newRectangle = new MyRectangle();
+                        newRectangle.X = SplashKit.MouseX();
+                        newRectangle.Y = SplashKit.MouseY();
+                        newShape = newRectangle;
+                    }
+
                     //No good way to instantiate a shape with different params directly in method?
                     //Shape constructor needs ability to accept X/Y paramters, I guess?
-                    Shape tempShape = new Shape();
-                    tempShape.X = SplashKit.MouseX();
-                    tempShape.Y = SplashKit.MouseY();
-                    drawObject.AddShape(tempShape);
+                    newShape.X = SplashKit.MouseX();
+                    newShape.Y = SplashKit.MouseY();
+                    drawObject.AddShape(newShape);
+
                 }
                 if (SplashKit.KeyTyped(KeyCode.SpaceKey))
                 {
