@@ -45,7 +45,7 @@ namespace ShapeDrawer
         */
         public override bool IsAt(Point2D pt)
         {
-            double tolerance = 20;
+            double tolerance = 5;
             Point2D normalisedLine;
             Point2D normalisedPoint;
             Point2D rotatedNormalisedLine;
