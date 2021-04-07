@@ -10,30 +10,37 @@ namespace ShapeDrawer
         private enum ShapeKind
         {
             Rectangle,
-            Circle
+            Circle,
+            Line
         }
         public static void Main()
         {
-            ShapeKind kindToAdd = ShapeKind.Circle;
-
+            ShapeKind kindToAdd = ShapeKind.Rectangle;
+            Point2D lineStart = new Point2D(){X = 0, Y = 0 };
+            Point2D lineEnd;
             new Window("Shape Drawer", 800, 600);
             Drawing drawObject = new Drawing();
             do
             {
                 SplashKit.ProcessEvents(); //Check user inputs - should only call once
-                SplashKit.ClearScreen(); //Clear screen to white                
+                SplashKit.ClearScreen(); //Clear screen to white
+                if (SplashKit.KeyTyped(KeyCode.RKey))
+                {
+                    kindToAdd = ShapeKind.Rectangle;
+                }
+                else if (SplashKit.KeyTyped(KeyCode.CKey))
+                {
+                    kindToAdd = ShapeKind.Circle;
+                }else if (SplashKit.KeyTyped(KeyCode.LKey))
+                {
+                    kindToAdd = ShapeKind.Line;
+                    lineStart.X = SplashKit.MouseX();
+                    lineStart.Y = SplashKit.MouseY();
+                }
                 if (SplashKit.MouseClicked(MouseButton.LeftButton))
                 {
                     Shape newShape;
 
-                    if (SplashKit.KeyTyped(KeyCode.RKey))
-                    {
-                        kindToAdd = ShapeKind.Rectangle;
-                    }
-                    else if (SplashKit.KeyTyped(KeyCode.CKey))
-                    {
-                        kindToAdd = ShapeKind.Circle;
-                    }
 
                     if (kindToAdd == ShapeKind.Circle)
                     {
@@ -42,18 +49,28 @@ namespace ShapeDrawer
                         newCircle.Y = SplashKit.MouseY();
                         newShape = newCircle;
                     }
-                    else
+                    else if (kindToAdd == ShapeKind.Rectangle)
                     {
                         MyRectangle newRectangle = new MyRectangle();
                         newRectangle.X = SplashKit.MouseX();
                         newRectangle.Y = SplashKit.MouseY();
                         newShape = newRectangle;
                     }
+                    else
+                    {
+                        lineEnd.X = SplashKit.MouseX();
+                        lineEnd.Y = SplashKit.MouseY();
+                        Line tempLine;
+                        tempLine.StartPoint = lineStart;
+                        tempLine.EndPoint = lineEnd;
+                        MyLine newLine = new MyLine(tempLine);
+                        newShape = newLine;
+                    }
 
                     //No good way to instantiate a shape with different params directly in method?
                     //Shape constructor needs ability to accept X/Y paramters, I guess?
-                    newShape.X = SplashKit.MouseX();
-                    newShape.Y = SplashKit.MouseY();
+                    //newShape.X = SplashKit.MouseX();
+                    //newShape.Y = SplashKit.MouseY();
                     drawObject.AddShape(newShape);
 
                 }

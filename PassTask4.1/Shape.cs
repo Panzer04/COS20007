@@ -7,20 +7,26 @@ using SplashKitSDK;
 
 namespace ShapeDrawer
 {
-    public class Shape
+    public abstract class Shape
     {
-        private Color _color;
+        protected Color _color;
         private float _x, _y;
-        private int _width, _height;
+
         private bool _selected;
-        public Shape() //Class constructor
+
+
+
+        public Shape(): this(Color.Green) //Class constructor
         {
-            _color = Color.Green;
             _x = 0;
             _y = 0;
-            _width = 100;
-            _height = 100;
         }
+
+        public Shape(Color clr)
+        {
+            _color = clr;
+        }
+
 
 
         public Color Color
@@ -57,28 +63,7 @@ namespace ShapeDrawer
                 _y = value;
             }
         }
-        public int Width
-        {
-            get
-            {
-                return _width;
-            }
-            set
-            {
-                _width = value;
-            }
-        }
-        public int Height
-        {
-            get
-            {
-                return _height;
-            }
-            set
-            {
-                _height = value;
-            }
-        }
+
 
         public bool Selected
         {
@@ -92,31 +77,11 @@ namespace ShapeDrawer
                 _selected = value;
             }
         }
-        public virtual void Draw()
-        {
-            if (_selected)
-            {
-                DrawOutline();
-            }
-            SplashKit.FillRectangle(_color, _x, _y, _width, _height);
-        }
+        public abstract void Draw();
 
-        public bool IsAt(Point2D pt)
-        {
-            if ((pt.X > _x) && (pt.X < (_x + _width)))
-            {
-                if ((pt.Y > _y) && (pt.Y < (_y + _height)))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        public abstract bool IsAt(Point2D pt);
 
-        public virtual void DrawOutline()
-        {
-            SplashKit.FillRectangle(Color.Black, _x - 2, _y - 2, _width + 4, _height + 4);
-        }
+        public abstract void DrawOutline();
 
 
     }
