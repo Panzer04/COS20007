@@ -10,7 +10,7 @@ namespace ShapeDrawer
     public class MyLine : Shape
     {
         Line _line;
-        DrawingOptions DrawingOptions = new DrawingOptions() {LineWidth = 5};
+        DrawingOptions DrawingOptions = new DrawingOptions() { LineWidth = 5 };
         public MyLine()
         {
 
@@ -56,13 +56,13 @@ namespace ShapeDrawer
             normalisedPoint.X = _line.EndPoint.X - pt.X;
             normalisedPoint.Y = _line.EndPoint.Y - pt.Y;
             //Rotate lines onto X axis
-            double theta = Math.Atan2(normalisedLine.Y , normalisedLine.X);
+            double theta = Math.Atan2(normalisedLine.Y, normalisedLine.X);
             rotatedNormalisedLine.X = Math.Cos(theta) * normalisedLine.X + Math.Sin(theta) * normalisedLine.Y;
             rotatedNormalisedLine.Y = Math.Cos(theta) * normalisedLine.Y - Math.Sin(theta) * normalisedLine.X;
             rotatedNormalisedPoint.X = Math.Cos(theta) * normalisedPoint.X + Math.Sin(theta) * normalisedPoint.Y;
             rotatedNormalisedPoint.Y = Math.Cos(theta) * normalisedPoint.Y - Math.Sin(theta) * normalisedPoint.X;
             //Check distance of rotated pt from line
-            if(Math.Abs(rotatedNormalisedPoint.Y - rotatedNormalisedLine.Y) < tolerance)
+            if (Math.Abs(rotatedNormalisedPoint.Y - rotatedNormalisedLine.Y) < tolerance)
             {
                 if (rotatedNormalisedPoint.X < rotatedNormalisedLine.X + tolerance && rotatedNormalisedPoint.X > -tolerance)
                 {
