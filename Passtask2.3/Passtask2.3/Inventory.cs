@@ -33,10 +33,7 @@ namespace Passtask2._3
             Item itm = Fetch(id);
             if(itm is not null)
             {
-                if (!_items.Remove(itm))
-                {
-                    
-                }
+                _items.Remove(itm);                
                 return itm;
             }
             return null;
