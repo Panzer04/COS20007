@@ -18,8 +18,8 @@ namespace Passtask2._3
         public void setup()
         {
             _apple = new Item(new string[] { "apple" }, "Apple", "A delicious red fruit");
-            _player = new Player("Panzer04", "A vistitor to a strange and unfamiliar land");
             _sword = new Item(new string[] { "sword" }, "Bronze Sword", "A poorly made bronze sword");
+            _player = new Player("Panzer04", "A vistitor to a strange and unfamiliar land");
             _player.Inventory.Put(_apple);
             _player.Inventory.Put(_sword);
         }
@@ -53,7 +53,7 @@ namespace Passtask2._3
         [Test]
         public void TestPlayerFullDescription()
         {
-            Assert.AreEqual("You are carrying: " + _player.Inventory.ItemList, _player.FullDescription);
+            Assert.AreEqual($"You are {_player.Name} A vistitor to a strange and unfamiliar land\n You are carrying: \n {_player.Inventory.ItemList}", _player.FullDescription);
         }
     }
 }

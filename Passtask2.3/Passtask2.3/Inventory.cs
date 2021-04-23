@@ -11,6 +11,7 @@ namespace Passtask2._3
         List<Item> _items = new List<Item>();
         public Inventory() { }
 
+        //Check if Inventory has Item
         public bool HasItem(string id)
         {
             foreach (Item itm in _items)
@@ -23,12 +24,14 @@ namespace Passtask2._3
             return false;
         }
 
+        //Put item in Inventory
         public void Put(Item itm)
         {
             _items.Add(itm);
         }
 
-        public Item take(string id)
+        //Return and remove item from inventory
+        public Item Take(string id)
         {
             Item itm = Fetch(id);
             if(itm is not null)
@@ -39,6 +42,7 @@ namespace Passtask2._3
             return null;
         }
 
+        //Return item without removing from Inventory
         public Item Fetch(string id)
         {
             foreach (Item itm in _items)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Passtask2._3
 {
-    public class Player : GameObject
+    public class Player : GameObject, IHaveInventory
     {
         Inventory _inventory = new Inventory();
         
@@ -33,7 +33,7 @@ namespace Passtask2._3
         {
             get
             {
-                return "You are carrying: " + _inventory.ItemList;
+                return "You are " + this.Name + " " + base.FullDescription + "\n You are carrying: \n " + _inventory.ItemList;
             }
         }
 

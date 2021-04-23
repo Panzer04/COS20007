@@ -49,7 +49,7 @@ namespace Passtask2._3
         public void testTake()
         {
             Assert.IsTrue(_inventory.HasItem("apple"));
-            Assert.AreEqual(_apple, _inventory.take("apple"));
+            Assert.AreEqual(_apple, _inventory.Take("apple"));
             Assert.IsFalse(_inventory.HasItem("apple"));
         }
 

@@ -6,4 +6,8 @@
     <RootNamespace>Passtask2._3</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="Bag.cs" />
+  </ItemGroup>
+
 </Project>
