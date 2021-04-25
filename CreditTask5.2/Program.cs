@@ -44,17 +44,15 @@ namespace ShapeDrawer
 
                     if (kindToAdd == ShapeKind.Circle)
                     {
-                        MyCircle newCircle = new MyCircle();
-                        newCircle.X = SplashKit.MouseX();
-                        newCircle.Y = SplashKit.MouseY();
-                        newShape = newCircle;
+                        newShape = new MyCircle();
+                        newShape.X = SplashKit.MouseX();
+                        newShape.Y = SplashKit.MouseY();
                     }
                     else if (kindToAdd == ShapeKind.Rectangle)
                     {
-                        MyRectangle newRectangle = new MyRectangle();
-                        newRectangle.X = SplashKit.MouseX();
-                        newRectangle.Y = SplashKit.MouseY();
-                        newShape = newRectangle;
+                        newShape = new MyRectangle();
+                        newShape.X = SplashKit.MouseX();
+                        newShape.Y = SplashKit.MouseY();
                     }
                     else
                     {
@@ -63,8 +61,7 @@ namespace ShapeDrawer
                         Line tempLine;
                         tempLine.StartPoint = lineStart;
                         tempLine.EndPoint = lineEnd;
-                        MyLine newLine = new MyLine(tempLine);
-                        newShape = newLine;
+                        newShape = new MyLine(tempLine);
                     }
 
                     //No good way to instantiate a shape with different params directly in method?
