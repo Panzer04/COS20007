@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SplashKitSDK;
+using System.IO;
 
 namespace ShapeDrawer
 {
@@ -91,6 +92,19 @@ namespace ShapeDrawer
         public void RemoveShape(Shape s)
         {
             _shapes.Remove(s);
+        }
+
+        public void Save(string fileName)
+        {
+            StreamWriter writer = new StreamWriter(fileName);
+            writer.WriteColor(Background);
+            writer.WriteLine(ShapeCount);
+            foreach(Shape s in _shapes)
+            {
+                s.SaveTo(writer);
+            }
+            writer.Close();
+
         }
         
     }

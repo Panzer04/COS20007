@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using SplashKitSDK;
 
 namespace ShapeDrawer
@@ -83,6 +84,12 @@ namespace ShapeDrawer
 
         public abstract void DrawOutline();
 
+        public virtual void SaveTo(StreamWriter writer)
+        {
+            writer.WriteColor(Color);
+            writer.WriteLine(X);
+            writer.WriteLine(Y);
+        }
 
     }
 }

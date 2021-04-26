@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,13 @@ namespace ShapeDrawer
         public override void DrawOutline()
         {
             SplashKit.FillCircle(Color.Black, X, Y, _radius + 2);
+        }
+
+        public override void SaveTo(StreamWriter writer)
+        {
+            writer.WriteLine("Circle");
+            base.SaveTo(writer);
+            writer.WriteLine(_radius);
         }
     }
 }

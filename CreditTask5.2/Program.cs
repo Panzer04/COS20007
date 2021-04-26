@@ -24,6 +24,7 @@ namespace ShapeDrawer
             {
                 SplashKit.ProcessEvents(); //Check user inputs - should only call once
                 SplashKit.ClearScreen(); //Clear screen to white
+
                 if (SplashKit.KeyTyped(KeyCode.RKey))
                 {
                     kindToAdd = ShapeKind.Rectangle;
@@ -83,6 +84,10 @@ namespace ShapeDrawer
                 {
                     foreach (Shape s in drawObject.SelectedShapes)
                         drawObject.RemoveShape(s);
+                }
+                if (SplashKit.KeyTyped(KeyCode.SKey))
+                {
+                    drawObject.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\TestDrawing.txt");
                 }
                 drawObject.Draw();
                 SplashKit.RefreshScreen(); //Target FPS? Should have an uint argument?

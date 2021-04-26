@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,16 @@ namespace ShapeDrawer
             }
             return false;
 
+        }
+
+        public override void SaveTo(StreamWriter writer)
+        {
+            writer.WriteLine("Line");
+            base.SaveTo(writer);
+            writer.WriteLine(_line.StartPoint.X);
+            writer.WriteLine(_line.StartPoint.Y);
+            writer.WriteLine(_line.EndPoint.X);
+            writer.WriteLine(_line.EndPoint.X);
         }
     }
 }
