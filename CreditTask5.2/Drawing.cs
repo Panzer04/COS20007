@@ -10,7 +10,7 @@ namespace ShapeDrawer
 {
     class Drawing
     {
-        
+
         private Color _background;
         private readonly List<Shape> _shapes;
         public Drawing(Color background) //Constructor
@@ -29,7 +29,7 @@ namespace ShapeDrawer
             get
             {
                 List<Shape> result = new List<Shape>();
-                foreach(Shape s in _shapes)
+                foreach (Shape s in _shapes)
                 {
                     if (s.Selected)
                     {
@@ -63,7 +63,7 @@ namespace ShapeDrawer
         public void Draw()
         {
             SplashKit.ClearScreen(_background);
-            foreach(Shape s in _shapes)
+            foreach (Shape s in _shapes)
             {
                 s.Draw();
             }
@@ -71,7 +71,7 @@ namespace ShapeDrawer
 
         public void SelectSchapesAt(Point2D pt)
         {
-            foreach(Shape s in _shapes)
+            foreach (Shape s in _shapes)
             {
                 if (!s.Selected) //Don't "unselect" shapes - Depends on exact desired behaviour, though
                 {
@@ -99,13 +99,53 @@ namespace ShapeDrawer
             StreamWriter writer = new StreamWriter(fileName);
             writer.WriteColor(Background);
             writer.WriteLine(ShapeCount);
-            foreach(Shape s in _shapes)
+            foreach (Shape s in _shapes)
             {
                 s.SaveTo(writer);
             }
             writer.Close();
 
         }
-        
+
+        public void Load(string filename)
+        {
+            StreamReader reader = new StreamReader(filename);
+            try
+            {
+                int count;
+                Shape s;
+                string kind;
+
+                Background = reader.ReadColor();
+                count = reader.ReadInteger();
+                _shapes.Clear();
+                for (int i = 0; i < count; i++)
+                {
+                    kind = reader.ReadLine();
+                    switch (kind)
+                    {
+                        case "Rectangle":
+                            s = new MyRectangle();
+                            break;
+                        case "Circle":
+                            s = new MyCircle();
+                            break;
+                        case "MyLine":
+                            s = new MyLine();
+                            break;
+                        default:
+                            throw new InvalidDataException("Unknown shape kind: " + kind);
+                    }
+                    s.LoadFrom(reader);
+                    AddShape(s);
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+
+        }
+
     }
 }

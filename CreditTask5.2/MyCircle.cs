@@ -58,5 +58,11 @@ namespace ShapeDrawer
             base.SaveTo(writer);
             writer.WriteLine(_radius);
         }
+
+        public override void LoadFrom(StreamReader reader)
+        {
+            base.LoadFrom(reader);
+            _radius = reader.ReadInteger();
+        }
     }
 }

@@ -81,7 +81,16 @@ namespace ShapeDrawer
             writer.WriteLine(_line.StartPoint.X);
             writer.WriteLine(_line.StartPoint.Y);
             writer.WriteLine(_line.EndPoint.X);
-            writer.WriteLine(_line.EndPoint.X);
+            writer.WriteLine(_line.EndPoint.Y);
+        }
+
+        public override void LoadFrom(StreamReader reader)
+        {
+            base.LoadFrom(reader);
+            _line.StartPoint.X = reader.ReadInteger();
+            _line.StartPoint.Y = reader.ReadInteger();
+            _line.EndPoint.X = reader.ReadInteger();
+            _line.EndPoint.Y = reader.ReadInteger();
         }
     }
 }

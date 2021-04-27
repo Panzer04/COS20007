@@ -89,6 +89,18 @@ namespace ShapeDrawer
                 {
                     drawObject.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\TestDrawing.txt");
                 }
+                if (SplashKit.KeyTyped(KeyCode.OKey))
+                {
+                    try
+                    {
+                        drawObject.Load(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\TestDrawing.txt");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Error.WriteLine("Error loading file: {0}", e.Message);
+                    }
+                    
+                }
                 drawObject.Draw();
                 SplashKit.RefreshScreen(); //Target FPS? Should have an uint argument?
             } while (!SplashKit.WindowCloseRequested("Shape Drawer"));

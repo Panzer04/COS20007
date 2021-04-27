@@ -11,7 +11,8 @@ namespace MidSemTest
         List<LibraryResource> _resources = new List<LibraryResource>();
         public Library(string name)
         {
-
+            //Spec asks for string arg, but leaves purpose unspecified.
+            //I couldn't figure out how it should be used or why we have it :P
         }
 
         public void AddResource(LibraryResource resource)
