@@ -15,6 +15,11 @@ namespace ShapeDrawer
         }
         public static void Main()
         {
+            //Add the Type MyRectangle to the register
+            Shape.RegisterShape("Rectangle", typeof(MyRectangle));
+            Shape.RegisterShape("Circle", typeof(MyCircle));
+            Shape.RegisterShape("Line", typeof(MyLine));
+
             ShapeKind kindToAdd = ShapeKind.Rectangle;
             Point2D lineStart = new Point2D(){X = 0, Y = 0 };
             Point2D lineEnd;

@@ -10,6 +10,21 @@ namespace ShapeDrawer
 {
     public abstract class Shape
     {
+        //Match string to type (eg. "Rectangle" -> MyRectangle)
+        private static Dictionary<string, Type> _ShapeCLassRegistry = new Dictionary<string, Type>();
+
+        public static void RegisterShape(string name, Type t)
+        {
+            _ShapeCLassRegistry[name] = t;
+        }
+
+        //Use a string identifier to specify a type to retrieve from the dictionary, then
+        //create an instance of the specified type from registry, and cast it to shape
+        public static Shape CreateShape(string name)
+        {
+            return (Shape)Activator.CreateInstance(_ShapeCLassRegistry[name]);
+        }
+
         protected Color _color;
         private float _x, _y;
 
@@ -86,6 +101,7 @@ namespace ShapeDrawer
 
         public virtual void SaveTo(StreamWriter writer)
         {
+            writer.WriteLine(Shape.GetKey(this.GetType()));
             writer.WriteColor(Color);
             writer.WriteLine(X);
             writer.WriteLine(Y);
@@ -96,6 +112,18 @@ namespace ShapeDrawer
             Color = reader.ReadColor();
             X = reader.ReadInteger();
             Y = reader.ReadInteger();
+        }
+
+        static string GetKey(Type t)
+        {
+            foreach(string key in _ShapeCLassRegistry.Keys)
+            {
+                if(_ShapeCLassRegistry[key] == t)
+                {
+                    return key;
+                }
+            }
+            throw new KeyNotFoundException();
         }
 
     }
