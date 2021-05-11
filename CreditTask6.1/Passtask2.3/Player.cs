@@ -9,10 +9,18 @@ namespace Passtask2._3
     public class Player : GameObject, IHaveInventory
     {
         Inventory _inventory = new Inventory();
-        
-        public Player(string name, string desc) : base(new string[] {"me", "inventory"}, name, desc)
-        {
+        Location _location;
 
+        //Initialise with default location, so as not to break existing code
+        public Player(string name, string desc) : base(new string[] { "me", "inventory" }, name, desc)
+        {
+            _location = new Location(new string[] { "nowhere" }, "nowhere", "The void");
+        }
+
+        //Constructor with location parameter
+        public Player(string name, string desc, Location location) : base(new string[] { "me", "inventory" }, name, desc)
+        {
+            _location = location;
         }
 
         //Find an object with this id associated with the player object.
@@ -22,9 +30,13 @@ namespace Passtask2._3
             {
                 return this;
             }
+            else if (_inventory.HasItem(id))
+            {
+                return _inventory.Fetch(id);
+            }
             else
             {
-                return _inventory.Fetch(id);               
+                return _location.Locate(id);
             }
         }
 
@@ -45,5 +57,12 @@ namespace Passtask2._3
             }
         }
 
+        public Location Location
+        {
+            get
+            {
+                return _location;
+            }
+        }
     }
 }

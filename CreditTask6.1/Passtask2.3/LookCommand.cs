@@ -23,7 +23,8 @@ namespace Passtask2._3
                 return "I don't know how to look like that";
             }
 
-            if (text.First() != "look")
+            //ToLower so that input is generic.
+            if (text.First().ToLower() != "look")
             {
                 return "Error in look input";
             }
@@ -55,8 +56,6 @@ namespace Passtask2._3
             }
             itemID = text[2];
             return LookAtIn(itemID, container);
-
-
         }
 
         private IHaveInventory FetchContainer(Player p, string containerID)

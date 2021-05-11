@@ -12,14 +12,22 @@ namespace Passtask2._3
         LookCommand _look;
         Player _player;
         Item _gem;
+        Item _book;
         string _gemDescription = "A pretty gem";
+        Location _location;
+
         [SetUp]
         public void Setup()
         {
-            _player = new Player("Panzer04", "the player");
+            
             _gem = new Item(new string[] { "gem" }, "Gem", _gemDescription);
+            _book = new Item(new string[] { "book" }, "A book", "A dense tome");
+            _location = new Location(new string[] { "swinburne" }, "Swinburne University", "A place of learning");
+            _location.Inventory.Put(_book);
+            _player = new Player("Panzer04", "the player", _location);
             _player.Inventory.Put(_gem);
             _look = new LookCommand();
+            
         }
         [Test]
         public void TestIsLookCommandIdentifiable()
@@ -84,8 +92,14 @@ namespace Passtask2._3
             Assert.AreEqual(invalidSizeError, _look.Execute(_player, new string[] { "a", "b", "c", "d"}));
             Assert.AreEqual(invalidSizeError, _look.Execute(_player, new string[] {"a" }));
             Assert.AreEqual(lookError, _look.Execute(_player, new string[] { "a", "b", "c" }));
-
         }
 
+        [Test]
+        public void TestLookInLocation()
+        {
+            string lookInLocation = "look at book";
+            string[] lookInLocationArr = lookInLocation.Split(" ");
+            Assert.AreEqual(_book.FullDescription,_look.Execute(_player, lookInLocationArr));
+        }
     }
 }
