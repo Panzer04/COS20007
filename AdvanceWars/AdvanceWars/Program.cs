@@ -7,9 +7,19 @@ namespace AdvanceWars
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             new Window("Test", 800, 600);
-            SplashKit.Delay(5000);
+            while (true)
+            {
+                Map map = new Map(10, 10);
+                Console.WriteLine("Hello World!");
+                Console.WriteLine("TEST");
+                map.Draw();
+                SplashKit.RefreshScreen();
+                SplashKit.Delay(50);
+            }
+
+
+
         }
     }
 }
