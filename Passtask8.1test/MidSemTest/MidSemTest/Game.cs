@@ -9,16 +9,26 @@ namespace MidSemTest
     class Game : LibraryResource
     {
         string _rating;
-        public Game(string name, string creator, string rating) : base(name, creator)
+        string _developer;
+        public Game(string name, string creator, string rating) : base(name)
         {
             _rating = rating;
+            _developer = creator;
         }
 
-        string Rating
+        public string Rating
         {
             get
             {
                 return _rating;
+            }
+        }
+
+        public override string Creator
+        {
+            get
+            {
+                return _developer;
             }
         }
     }

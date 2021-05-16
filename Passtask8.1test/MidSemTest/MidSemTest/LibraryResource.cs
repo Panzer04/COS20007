@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace MidSemTest
 {
-    class LibraryResource
+    abstract class LibraryResource
     {
         string _name;
-        string _creator;
         bool _onLoan;
-        public LibraryResource(string name, string creator)
+        public LibraryResource(string name)
         {
             _name = name;
-            _creator = creator;
         }
 
 
@@ -27,12 +25,9 @@ namespace MidSemTest
             }
         }
 
-        public string Creator
+        abstract public string Creator
         {
-            get
-            {
-                return _creator;
-            }
+            get;
         }
 
         public bool OnLoan
