@@ -76,5 +76,18 @@ namespace AdvanceWars
                 t.Draw();
             }
         }
+
+        public Tile this[int row, int col]
+        {
+            get
+            {
+                return _map[row, col];
+            }
+            set
+            {
+                _map[row, col] = value;
+            }
+        }
+
     }
 }

@@ -12,13 +12,16 @@ namespace AdvanceWars
         Tile[] _neighbours;
         protected int _x;
         protected int _y;
+        protected int _moveCost;
         protected int tileSize = 16;
+        public Unit _unit;
 
         public Tile(int x, int y)
         {
             _x = x;
             _y = y;
             _neighbours = new Tile[4];
+            _moveCost = 1;
         }
 
         public Tile Up
@@ -68,6 +71,43 @@ namespace AdvanceWars
 
         public virtual void Draw()
         {
+            Point2D unitDraw = new Point2D();
+            unitDraw.X = _x * 16;
+            unitDraw.Y = _y * 16;
+            if (_unit is null)
+            {
+                //Do nothing. No unit on this tile
+            }
+            else
+            {
+                _unit.Draw(unitDraw);
+            }
+
+        }
+
+        public Unit Unit
+        {
+            get
+            {
+                return _unit;
+            }
+            set
+            {
+                _unit = value;
+            }
+        }
+
+        public int X
+        {
+            get { return _x; }
+        }
+        public int Y
+        {
+            get { return _y; }
+        }
+        public int MoveCost
+        {
+            get { return _moveCost; }
         }
     }
 }
