@@ -30,6 +30,8 @@ namespace Passtask2._3
             _player.Inventory.Put(_backpack);
             ((Bag)_player.Inventory.Fetch("backpack")).Inventory.Put(_book);
 
+            Console.WriteLine(_player.Location.FullDescription);
+
             while (true)
             {
                 string[] command = Console.ReadLine().Split(" ");

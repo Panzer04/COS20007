@@ -31,5 +31,11 @@ namespace Passtask2._3
             _location.Inventory.Put(_apple);
             Assert.AreEqual(_location.Locate("apple"), _apple);
         }
+
+        [Test]
+        public void TestLocationDescription()
+        {
+            Assert.AreEqual("You are at " + _location.Name + "\n" + "A place of learning" + _location.ShortDescription + "\nYou can see: \n " + _location.Inventory.ItemList, _location.FullDescription);
+        }
     }
 }

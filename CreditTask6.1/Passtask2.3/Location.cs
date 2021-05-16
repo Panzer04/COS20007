@@ -26,5 +26,13 @@ namespace Passtask2._3
                 return _inventory;
             }
         }
+
+        public override string FullDescription
+        {
+            get
+            {
+                return "You are at " + this.Name + "\n" + base.FullDescription + "\nYou can see: \n " + _inventory.ItemList;
+            }
+        }
     }
 }
