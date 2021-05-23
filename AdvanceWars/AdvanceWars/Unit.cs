@@ -12,11 +12,13 @@ namespace AdvanceWars
         protected int _health;
         protected int _moves;
         protected int _attack;
-        public Unit(int health, int moves, int attack)
+        protected Tile _location;
+        public Unit(int health, int moves, int attack, Tile location)
         {
             _health = health;
             _moves = moves;
             _attack = attack;
+            _location = location;
         }
 
         public virtual void Draw(Point2D location)
@@ -32,6 +34,18 @@ namespace AdvanceWars
             }
             throw new NotImplementedException();
             return false;
+        }
+
+        public Tile Location
+        {
+            get
+            {
+                return _location;
+            }
+            set
+            {
+                _location = value;
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace AdvanceWars
 {
     class Tank : Unit, IDraw
     {
-        public Tank(int health, int moves, int attack) : base(health, moves, attack)
+        public Tank(int health, int moves, int attack, Tile location) : base(health, moves, attack, location)
         {
 
         }
