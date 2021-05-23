@@ -17,11 +17,10 @@ namespace AdvanceWars
                 Tile newTile = new Grassland(5, 5);
                 Tank tank = new Tank(10, 10, 10, newTile);
 
-                newTile.Unit = tank;
-                map[5, 5] = newTile;
+                map[5, 5] = tank;
                 map.Draw();
-                SplashKit.RefreshScreen();
-                SplashKit.Delay(50);
+                SplashKit.RefreshScreen(1);
+                
             }
 
 

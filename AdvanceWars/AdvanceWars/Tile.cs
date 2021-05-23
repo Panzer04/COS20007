@@ -7,14 +7,13 @@ using SplashKitSDK;
 
 namespace AdvanceWars
 {
-    abstract class Tile : IDraw
+    abstract class Tile : IMapObject, IDraw
     {
-        Tile[] _neighbours;
+        IMapObject[] _neighbours;
         protected int _x;
         protected int _y;
         protected int _moveCost;
         protected int tileSize = 16;
-        public Unit _unit;
 
         public Tile(int x, int y)
         {
@@ -24,7 +23,7 @@ namespace AdvanceWars
             _moveCost = 1;
         }
 
-        public Tile Up
+        public IMapObject Up
         {
             get
             {
@@ -35,7 +34,7 @@ namespace AdvanceWars
                 _neighbours[0] = value;
             }
         }
-        public Tile Right
+        public IMapObject Right
         {
             get
             {
@@ -46,7 +45,7 @@ namespace AdvanceWars
                 _neighbours[1] = value;
             }
         }
-        public Tile Down
+        public IMapObject Down
         {
             get
             {
@@ -57,7 +56,7 @@ namespace AdvanceWars
                 _neighbours[2] = value;
             }
         }
-        public Tile Left
+        public IMapObject Left
         {
             get
             {
@@ -71,32 +70,8 @@ namespace AdvanceWars
 
         public virtual void Draw()
         {
-            Point2D unitDraw = new Point2D();
-            unitDraw.X = _x * 16;
-            unitDraw.Y = _y * 16;
-            if (_unit is null)
-            {
-                //Do nothing. No unit on this tile
-            }
-            else
-            {
-                _unit.Draw(unitDraw);
-            }
-
+            //throw new NotImplementedException();
         }
-
-        public Unit Unit
-        {
-            get
-            {
-                return _unit;
-            }
-            set
-            {
-                _unit = value;
-            }
-        }
-
         public int X
         {
             get { return _x; }

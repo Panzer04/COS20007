@@ -11,7 +11,7 @@ namespace AdvanceWars
     {
         public Grassland(int rows, int columns) : base(rows, columns)
         {
-            SplashKit.LoadBitmap("Grassland", "C:\\Users\\Jordan\\Documents\\GitHub\\COS20007\\AdvanceWars\\AdvanceWars\\grassland.bmp");
+            SplashKit.LoadBitmap("Grassland", "C:\\Users\\Jordan\\Documents\\GitHub\\COS20007\\AdvanceWars\\AdvanceWars\\textures\\grassland.bmp");
         }
 
         public override void Draw()

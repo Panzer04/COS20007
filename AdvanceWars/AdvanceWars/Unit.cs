@@ -7,7 +7,7 @@ using SplashKitSDK;
 
 namespace AdvanceWars
 {
-    abstract class Unit
+    abstract class Unit : IMapObject
     {
         protected int _health;
         protected int _moves;
@@ -21,20 +21,18 @@ namespace AdvanceWars
             _location = location;
         }
 
-        public virtual void Draw(Point2D location)
+        public virtual void Draw()
         {
-
+            _location.Draw();
         }
 
-        bool CanMove(int row, int col, Tile currentTile)
+        bool CanMove(int row, int col, IMapObject currentTile)
         {
-            if(currentTile.X == row && currentTile.Y == col)
-            {
-                return true;
-            }
+            
             throw new NotImplementedException();
             return false;
         }
+
 
         public Tile Location
         {
@@ -45,6 +43,51 @@ namespace AdvanceWars
             set
             {
                 _location = value;
+            }
+        }
+
+        public IMapObject Up
+        {
+            get
+            {
+                return _location.Up;
+            }
+            set
+            {
+                _location.Up = value;
+            }
+        }
+        public IMapObject Right
+        {
+            get
+            {
+                return _location.Right;
+            }
+            set
+            {
+                _location.Right = value;
+            }
+        }
+        public IMapObject Down
+        {
+            get
+            {
+                return _location.Down;
+            }
+            set
+            {
+                _location.Down = value;
+            }
+        }
+        public IMapObject Left
+        {
+            get
+            {
+                return _location.Left;
+            }
+            set
+            {
+                _location.Left = value;
             }
         }
     }

@@ -13,11 +13,12 @@ namespace AdvanceWars
 
         }
 
-        public override void Draw(Point2D location)
+        public override void Draw()
         {
-            SplashKit.LoadBitmap("Tank", "C:\\Users\\Jordan\\Documents\\GitHub\\COS20007\\AdvanceWars\\AdvanceWars\\tank16.bmp");
+            base.Draw();
+            SplashKit.LoadBitmap("Tank", "C:\\Users\\Jordan\\Documents\\GitHub\\COS20007\\AdvanceWars\\AdvanceWars\\textures\\tank16.bmp");
             bool test = SplashKit.HasBitmap("Tank");
-            SplashKit.DrawBitmap("Tank", location.X, location.Y);
+            SplashKit.DrawBitmap("Tank", base.Location.X * 16, base.Location.Y * 16);
         }
     }
 }

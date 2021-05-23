@@ -10,12 +10,12 @@ namespace AdvanceWars
     {
         int _rows;
         int _cols;
-        Tile[,] _map;
+        IMapObject[,] _map;
         public Map(int rows, int columns)
         {
             _rows = rows;
             _cols = columns;
-            _map = new Tile[rows, columns];
+            _map = new IMapObject[rows, columns];
             for (int i = 0; i < rows; i++)
             {
                 for(int k = 0; k < columns; k++)
@@ -30,8 +30,7 @@ namespace AdvanceWars
             {
                 for (int k = 0; k < columns; k++)
                 {
-                    
-                    
+
                     
                     if (i == 0)
                     {
@@ -71,13 +70,13 @@ namespace AdvanceWars
         }
         public void Draw()
         {
-            foreach (Tile t in _map)
+            foreach (IDraw t in _map)
             {
                 t.Draw();
             }
         }
 
-        public Tile this[int row, int col]
+        public IMapObject this[int row, int col]
         {
             get
             {
