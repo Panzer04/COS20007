@@ -18,7 +18,9 @@ namespace AdvanceWars
             base.Draw();
             SplashKit.LoadBitmap("Tank", "C:\\Users\\Jordan\\Documents\\GitHub\\COS20007\\AdvanceWars\\AdvanceWars\\textures\\tank16.bmp");
             bool test = SplashKit.HasBitmap("Tank");
-            SplashKit.DrawBitmap("Tank", base.Location.X * 16, base.Location.Y * 16);
+            SplashKit.DrawBitmap("Tank", base.Location.Row * 16, base.Location.Col * 16);
         }
+
+
     }
 }

@@ -8,6 +8,7 @@ namespace AdvanceWars
 {
     public interface IDraw
     {
+        //Draw objects can draw
         void Draw() {}
     }
 }

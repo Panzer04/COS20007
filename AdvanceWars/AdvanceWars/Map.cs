@@ -76,6 +76,11 @@ namespace AdvanceWars
             }
         }
 
+        public void Select()
+        {
+            
+        }
+
         public IMapObject this[int row, int col]
         {
             get

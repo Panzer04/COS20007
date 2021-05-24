@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SplashKitSDK;
 
 namespace AdvanceWarsECS
@@ -8,16 +9,24 @@ namespace AdvanceWarsECS
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            new Window("Test",800, 600);
-
+            new Window("Test", 800, 600);
+            SDraw.Load();
 
             Entity tank = new Tank();
+            List<Entity> entityList = new List<Entity>();
+
+            entityList.Add(tank);
+
             while (true)
             {
-                SDraw.Draw((CDrawable)tank.Component);
+                foreach(Entity e in entityList)
+                {
+                    SDraw.Draw((CDrawable)tank.Component);
+                }
+                
                 SplashKit.RefreshScreen(1);
             }
-            
+
         }
     }
 }

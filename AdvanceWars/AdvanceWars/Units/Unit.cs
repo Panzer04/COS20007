@@ -26,11 +26,27 @@ namespace AdvanceWars
             _location.Draw();
         }
 
-        bool CanMove(int row, int col, IMapObject currentTile)
+        //Lowest cost of moving to a specified tile
+        int moveCost(Tile otherTile, int moveSpent = 0, List<Tile> searched = null)
         {
-            
+            foreach(Tile t in _location.Neighbours)
+            {
+                if (t is null)
+                {
+                    return 1000;
+                }
+                if (t == otherTile)
+                {
+                    return moveSpent;
+                }
+                else
+                {
+                    searched.Add(_location);
+                    return moveCost(otherTile, moveSpent + otherTile.MoveCost, searched);
+                }
+
+            }
             throw new NotImplementedException();
-            return false;
         }
 
 
@@ -88,6 +104,29 @@ namespace AdvanceWars
             set
             {
                 _location.Left = value;
+            }
+        }
+
+        public int Row
+        {
+            get
+            {
+                return _location.Row;
+            }
+            set
+            {
+                _location.Row = value;
+            }
+        }
+        public int Col
+        {
+            get
+            {
+                return _location.Col;
+            }
+            set
+            {
+                _location.Col = value;
             }
         }
     }

@@ -10,15 +10,13 @@ namespace AdvanceWars
     abstract class Tile : IMapObject, IDraw
     {
         IMapObject[] _neighbours;
-        protected int _x;
-        protected int _y;
-        protected int _moveCost;
+        private int _moveCost;
         protected int tileSize = 16;
 
-        public Tile(int x, int y)
+        public Tile(int row, int col)
         {
-            _x = x;
-            _y = y;
+            Row = row;
+            Col = col;
             _neighbours = new Tile[4];
             _moveCost = 1;
         }
@@ -68,18 +66,13 @@ namespace AdvanceWars
             }
         }
 
-        public virtual void Draw()
-        {
-            //throw new NotImplementedException();
-        }
-        public int X
-        {
-            get { return _x; }
-        }
-        public int Y
-        {
-            get { return _y; }
-        }
+        //Foreach iterator of neighbours
+        public System.Collections.IEnumerable Neighbours;
+
+        public abstract void Draw();
+        public int Row { get; set; }
+        public int Col { get; set; }
+
         public int MoveCost
         {
             get { return _moveCost; }

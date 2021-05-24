@@ -18,8 +18,7 @@ namespace AdvanceWars
         {
             bool test = SplashKit.HasBitmap("Grassland");
             Color clr = Color.RandomRGB(0);
-            SplashKit.DrawBitmap("Grassland", base._x * base.tileSize, base._y * base.tileSize);
-            base.Draw();
+            SplashKit.DrawBitmap("Grassland", base.Row * base.tileSize, base.Col * base.tileSize);
         }
     }
 }
