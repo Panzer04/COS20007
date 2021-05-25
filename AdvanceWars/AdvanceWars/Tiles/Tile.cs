@@ -7,20 +7,29 @@ using SplashKitSDK;
 
 namespace AdvanceWars
 {
-    abstract class Tile : IMapObject, IDraw
+    abstract class Tile : IMapObject
     {
         IMapObject[] _neighbours;
-        protected int _x;
-        protected int _y;
-        protected int _moveCost;
-        protected int tileSize = 16;
-
-        public Tile(int x, int y)
+        private int _tileSize; 
+        public Tile(int row, int col, int tileSize = 16)
         {
-            _x = x;
-            _y = y;
+            Row = row;
+            Col = col;
             _neighbours = new Tile[4];
-            _moveCost = 1;
+            Unit = null;
+            _tileSize = tileSize;
+        }
+
+        public bool Select(Point2D pt)
+        {
+            if(pt.X > Row*Size && pt.X < ((Row+1)* Size))
+            {
+                if(pt.Y > Col * Size && pt.Y < ((Col + 1) * Size))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public IMapObject Up
@@ -70,19 +79,25 @@ namespace AdvanceWars
 
         public virtual void Draw()
         {
-            //throw new NotImplementedException();
+
         }
-        public int X
+        public int Row { get; set; }
+        public int Col { get; set; }
+
+        public int Size
         {
-            get { return _x; }
+            get
+            {
+                return _tileSize;
+            }
+            set
+            {
+                _tileSize = value;
+            }
         }
-        public int Y
-        {
-            get { return _y; }
-        }
-        public int MoveCost
-        {
-            get { return _moveCost; }
-        }
+        public Unit Unit { get; set; }
+        public int MoveCost{ get; init; }
+
+        public bool Selected { get; set; }
     }
 }
