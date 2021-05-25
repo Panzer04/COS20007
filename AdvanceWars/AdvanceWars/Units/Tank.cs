@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 using SplashKitSDK;
 namespace AdvanceWars
 {
-    class Tank : Unit, IDraw
+    class Tank : Unit
     {
-        public Tank(int health, int moves, int attack, Tile location) : base(health, moves, attack, location)
+        public Tank(int health, int moves, int attack) : base(health, moves, attack)
         {
 
         }
 
-        public override void Draw()
+        public override void Draw(int row, int col, int size)
         {
-            base.Draw();
             SplashKit.LoadBitmap("Tank", "C:\\Users\\Jordan\\Documents\\GitHub\\COS20007\\AdvanceWars\\AdvanceWars\\textures\\tank16.bmp");
             bool test = SplashKit.HasBitmap("Tank");
-            SplashKit.DrawBitmap("Tank", base.Location.Row * 16, base.Location.Col * 16);
+            SplashKit.DrawBitmap("Tank", row * size, col * size);
         }
 
 
